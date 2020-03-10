@@ -5,10 +5,10 @@
             {{ property.title }}
         </a>
     </h5>
-    <p class="card-text">{{ property.city }} ({{ property.postaleCode }})</p>
+    <p class="card-text">{{ property.surface }} m² - {{ property.city }} ({{ property.postaleCode }})</p>
     <p class="card-text">{{ property.description | nl2br }}</p>
     <div class="text-primary" style="font-weight: bold;font-size: 2rem;">
-        {{ property.price | number_format(0, '', ' ') }} € 
+      {{ property.formattedPrice }} 
     </div>
   </div>
 </div>

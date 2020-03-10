@@ -47,8 +47,8 @@ class Property
      * @Assert\Range(
      *      min = 10,
      *      max = 400,
-     *      minMessage = "Surface must be at least 10 m² tall to enter",
-     *      maxMessage = "Surface cannot be taller than 400 m² to enter"
+     *      minMessage = "Surface must be at least 10 m²",
+     *      maxMessage = "Surface cannot be taller than 400 m²"
      * )
      */
     private $surface;
