@@ -18,7 +18,7 @@ class PropertyFixture extends Fixture
         for ($i=0; $i < 100 ; $i++) { 
            $property = new Property(); 
            $property->setTitle($faker->words(3, true))
-                    ->setDescription($faker->sentence( 3, true))
+                    ->setDescription($faker->sentence( 10, true))
                     ->setSurface($faker->numberBetween($min = 20, $max = 350))
                     ->setRooms($faker->numberBetween($min = 2, $max = 10))
                     ->setBedrooms($faker->numberBetween($min = 1, $max = 9))

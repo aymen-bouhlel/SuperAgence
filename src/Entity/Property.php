@@ -2,16 +2,20 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
  * @UniqueEntity("title")
+ * @Vich\Uploadable
  */
 class Property
 {
@@ -110,6 +114,30 @@ class Property
      * @ORM\ManyToMany(targetEntity="App\Entity\Option", inversedBy="properties")
      */
     private $options;
+
+    /**
+    * NOTE: This is not a mapped field of entity metadata, just a simple property.
+    * 
+    * @Vich\UploadableField(mapping="property_image", fileNameProperty="fileName")
+    * @Assert\Image(mimeTypes="image/jpeg")
+    * 
+    * @var File|null
+    */
+   private $imageFile;
+
+   /**
+    * @ORM\Column(type="string", length=255)
+    *
+    * @var string|null
+    */
+   private $fileName;
+
+   /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updated_at;
 
     
     public function __construct()
@@ -323,4 +351,30 @@ class Property
 
         return $this;
     }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setFileName(?string $fileName): void
+    {
+        $this->fileName = $fileName;
+    }
+
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
+    }
+
+    
+
 }
