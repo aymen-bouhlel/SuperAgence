@@ -5,6 +5,19 @@
 {% block body %}
     <div class="jumbotron">
         <div class="container">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% if not formContact.vars.valid %}
+                <div class="alert alert-danger" role="alert">
+                  <h4 class="alert-heading">Erreur</h4>
+                  <p>Essayer une autre fois</p>
+                </div>
+            {% endif %}
+            
             <div class="row">
                 <div class="col-md-8">
                     {% if property.fileName %}
@@ -18,6 +31,30 @@
                     <h2>{{ property.rooms }} piéces - {{ property.surface }} m²</h2>
                     <div class="text-primary" style="font-size: 4rem;font-weight: bold;">{{ property.formattedPrice }} </div>
                     <a href="#" class="btn btn-primary">Contacter l'agence</a>
+                    <div id="contactForm" class="mt-4">
+                        {{ form_start(formContact) }}
+                            <div class="row">
+                                <div class="col">
+                                    {{ form_row(formContact.firstName) }}
+                                </div>
+                                <div class="col">
+                                    {{ form_row(formContact.lastName) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    {{ form_row(formContact.phone) }}
+                                </div>
+                                <div class="col">
+                                    {{ form_row(formContact.email) }}
+                                </div>
+                            </div>
+                            {{ form_rest(formContact) }}
+                            <div class="form-group">
+                                <button class="btn btn-primary">Envoyer</button>
+                            </div>
+                        {{ form_end(formContact) }}
+                    </div>
                 </div>
             </div>
         </div>

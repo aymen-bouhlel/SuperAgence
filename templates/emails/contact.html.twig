@@ -1,0 +1,35 @@
+<div>
+  <table class="table">
+      <tr>
+        <td>Bien</td>
+        <td><a href="{{ url('property.show', {id: contact.property.id, slug: contact.property.slug}) }}">{{ contact.property.title }}</a></td>
+      </tr>
+      
+      <tr>
+        <td>Prénom</td>
+        <td>{{ contact.firstName }}</td>
+      </tr>
+
+      <tr>
+        <td>Nom</td>
+        <td>{{ contact.lastName }}</td>
+      </tr>
+      
+      <tr>
+        <td>Telephone</td>
+        <td>{{ contact.phone }}</td>
+      </tr>
+
+      <tr>
+        <td>Email</td>
+        <td>{{ contact.email }}</td>
+      </tr>
+
+      <tr>
+        <td>Message</td>
+        <td>{{ contact.message | nl2br }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
