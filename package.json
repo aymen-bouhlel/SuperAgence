@@ -12,7 +12,11 @@
         "build": "encore production"
     },
     "dependencies": {
+        "core-js": "^3.6.4",
         "jquery": "^3.4.1",
-        "select2": "^4.0.13"
+        "leaflet": "^1.6.0",
+        "places.js": "^1.18.1",
+        "select2": "^4.0.13",
+        "slick-carousel": "^1.8.1"
     }
 }

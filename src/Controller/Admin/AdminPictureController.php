@@ -1,22 +1,18 @@
 <?php
-
 namespace App\Controller\Admin;
 
-
 use App\Entity\Picture;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin/picture")
  */
-class AdminPictureController extends AbstractController
-{
+class AdminPictureController extends AbstractController {
 
-     /**
+    /**
      * @Route("/{id}", name="admin.picture.delete", methods="DELETE")
      */
     public function delete(Picture $picture, Request $request) {
@@ -30,5 +26,6 @@ class AdminPictureController extends AbstractController
 
         return new JsonResponse(['error' => 'Token invalide'], 400);
     }
-    
+
 }
+

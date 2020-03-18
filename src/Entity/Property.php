@@ -125,10 +125,20 @@ class Property
 
     /**
      * @Assert\All({
-     *  @Assert\Image(mimeTypes="image/jpeg")
+     * @Assert\Image(mimeTypes="image/jpeg")
      * })
      */
     private $pictureFiles;
+
+    /**
+     * @ORM\Column(type="float", scale=4, precision=6)
+     */
+    private $lat;
+
+    /**
+     * @ORM\Column(type="float", scale=4, precision=7)
+     */
+    private $lng;
 
     public function __construct()
     {
@@ -402,6 +412,30 @@ class Property
             $this->addPicture($picture);
         }
         $this->pictureFiles = $pictureFiles;
+
+        return $this;
+    }
+
+    public function getLat(): ?float
+    {
+        return $this->lat;
+    }
+
+    public function setLat(float $lat): self
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    public function getLng(): ?float
+    {
+        return $this->lng;
+    }
+
+    public function setLng(float $lng): self
+    {
+        $this->lng = $lng;
 
         return $this;
     }
