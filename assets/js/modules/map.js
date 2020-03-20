@@ -2,7 +2,6 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 export default class Map {
-
   static init () {
     let map = document.querySelector('#map')
     if (map === null) {
@@ -19,7 +18,7 @@ export default class Map {
       minZoom: 12,
       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map)
-    L.marker(center, {icon: icon}).addTo(map)
+    L.marker(center, { icon: icon }).addTo(map)
   }
 
 }

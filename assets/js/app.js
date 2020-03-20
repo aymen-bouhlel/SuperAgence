@@ -37,7 +37,7 @@ require('select2')
 $('[data-slider]').slick({
   dots: true,
   arrows: true
-})
+})  
 
 $('select').select2()
 var $contactButton = $('#contactButton')
